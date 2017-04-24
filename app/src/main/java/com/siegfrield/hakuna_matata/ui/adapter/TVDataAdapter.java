@@ -1,9 +1,9 @@
-package com.siegfrield.hakuna_matata.controller.adapter;
+package com.siegfrield.hakuna_matata.ui.adapter;
 
 import android.view.View;
 
-import com.siegfrield.hakuna_matata.controller.holder.BaseHolder;
-import com.siegfrield.hakuna_matata.controller.holder.TVHolder;
+import com.siegfrield.hakuna_matata.ui.holder.BaseHolder;
+import com.siegfrield.hakuna_matata.ui.holder.TVHolder;
 
 /**
  * Created by Administrator on 2017/4/21.

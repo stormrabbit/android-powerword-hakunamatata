@@ -1,17 +1,15 @@
-package com.siegfrield.hakuna_matata.controller.adapter;
+package com.siegfrield.hakuna_matata.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.siegfrield.hakuna_matata.controller.holder.BaseHolder;
+import com.siegfrield.hakuna_matata.ui.holder.BaseHolder;
 import com.siegfrield.hakuna_matata.model.data.Data;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * Created by Administrator on 2017/3/23.

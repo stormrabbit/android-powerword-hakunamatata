@@ -1,8 +1,6 @@
-package com.siegfrield.hakuna_matata.controller.holder;
+package com.siegfrield.hakuna_matata.ui.holder;
 
 import android.view.View;
-
-import com.siegfrield.hakuna_matata.model.data.Data;
 
 /**
  * Created by Administrator on 2017/4/21.

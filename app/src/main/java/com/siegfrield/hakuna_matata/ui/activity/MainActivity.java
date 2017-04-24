@@ -1,4 +1,4 @@
-package com.siegfrield.hakuna_matata.controller.activity;
+package com.siegfrield.hakuna_matata.ui.activity;
 
 import android.app.Activity;
 import android.databinding.DataBindingUtil;

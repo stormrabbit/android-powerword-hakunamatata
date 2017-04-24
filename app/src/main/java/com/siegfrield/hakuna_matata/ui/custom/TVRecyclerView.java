@@ -1,4 +1,4 @@
-package com.siegfrield.hakuna_matata.controller.custom;
+package com.siegfrield.hakuna_matata.ui.custom;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,8 +9,8 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 
-import com.siegfrield.hakuna_matata.controller.adapter.BaseDataAdapter;
-import com.siegfrield.hakuna_matata.controller.holder.BaseHolder;
+import com.siegfrield.hakuna_matata.ui.adapter.BaseDataAdapter;
+import com.siegfrield.hakuna_matata.ui.holder.BaseHolder;
 import com.siegfrield.hakuna_matata.model.data.Data;
 
 import java.util.List;

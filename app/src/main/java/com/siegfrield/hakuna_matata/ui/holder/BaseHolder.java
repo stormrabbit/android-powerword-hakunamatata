@@ -1,4 +1,4 @@
-package com.siegfrield.hakuna_matata.controller.holder;
+package com.siegfrield.hakuna_matata.ui.holder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
