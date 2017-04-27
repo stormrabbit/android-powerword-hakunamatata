@@ -7,11 +7,11 @@ package com.siegfrield.hakuna_matata.model.data;
 public class ResultData<T> {
     private T t;
 
-    public T getT() {
+    public T get() {
         return t;
     }
 
-    public void setT(T t) {
+    public void set(T t) {
         this.t = t;
     }
 }

@@ -1,4 +1,4 @@
-package com.siegfrield.hakuna_matata.service.network;
+package com.siegfrield.hakuna_matata.service.retrofit;
 
 import com.siegfrield.hakuna_matata.model.data.WeatherData;
 

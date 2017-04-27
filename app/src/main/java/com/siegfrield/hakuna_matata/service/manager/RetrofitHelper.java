@@ -1,4 +1,4 @@
-package com.siegfrield.hakuna_matata.service.network;
+package com.siegfrield.hakuna_matata.service.manager;
 
 import com.google.gson.GsonBuilder;
 

@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.siegfrield.hakuna_matata.ui.holder.BaseHolder;
 import com.siegfrield.hakuna_matata.model.data.Data;
+import com.siegfrield.hakuna_matata.ui.holder.BaseHolder;
 
 import java.util.ArrayList;
 import java.util.List;
