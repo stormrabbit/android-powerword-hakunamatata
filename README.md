@@ -10,4 +10,4 @@
 ## 包含 ##
 - DataBinding
 - TVRecycleView 自己写的应对 Android TV 里焦点移动滚动防丢失、 滚到边缘加载更多数据的 RecycleView
-- Retrofit 基于Rx Java 和 Retrofit 的网络框架
+- 基于Rx Java 和 Retrofit 的网络框架
