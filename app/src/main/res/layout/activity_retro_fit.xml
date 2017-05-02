@@ -11,7 +11,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.siegfrield.hakuna_matata.ui.activity.MainActivity">
+        tools:context="com.siegfrield.hakuna_matata.ui.activity.RetrofitDemoActivity">
 
         <TextView
             android:layout_width="match_parent"

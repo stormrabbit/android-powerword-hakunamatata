@@ -1,11 +1,12 @@
 package com.siegfrield.hakuna_matata.ui.adapter;
 
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.siegfrield.hakuna_matata.model.data.Data;
 import com.siegfrield.hakuna_matata.ui.holder.BaseHolder;
 
 import java.util.ArrayList;
@@ -15,12 +16,12 @@ import java.util.List;
  * Created by Administrator on 2017/3/23.
  */
 
-public abstract class BaseDataAdapter extends RecyclerView.Adapter<BaseHolder> implements View.OnClickListener,View.OnFocusChangeListener{
+public abstract class BaseDataAdapter<V extends ViewDataBinding, T> extends RecyclerView.Adapter<BaseHolder> implements View.OnClickListener{
 
     private final int resId;
     private OnAdapterItemClickListener oaicl = null;
 
-    private List<Data> dataList = null;
+    private List<T> dataList = null;
     public BaseDataAdapter(){
         this.resId = this.getLayoutId();
     }
@@ -31,7 +32,8 @@ public abstract class BaseDataAdapter extends RecyclerView.Adapter<BaseHolder> i
     public BaseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // 根据传入的layout创建view
         View view = LayoutInflater.from(parent.getContext()).inflate(this.resId, parent,false);
-        BaseHolder baseHolder = this.getHolder(view);
+        V binding = DataBindingUtil.bind(view);
+        BaseHolder baseHolder = this.getHolder(binding);
 
         return baseHolder;
     }
@@ -41,7 +43,7 @@ public abstract class BaseDataAdapter extends RecyclerView.Adapter<BaseHolder> i
         holder.itemView.setOnClickListener(this);
         // 记录holder位置
         holder.position = position;
-        Data data = dataList.get(position);
+        T data = dataList.get(position);
         holder.setData(data);
 
     }
@@ -49,10 +51,10 @@ public abstract class BaseDataAdapter extends RecyclerView.Adapter<BaseHolder> i
     protected abstract int getLayoutId();
 
     // 确定holder
-    protected abstract BaseHolder getHolder(View view);
+    protected abstract BaseHolder getHolder(V binding);
 
     // 更新数据
-    public void updateData(List<Data> dataList){
+    public void updateData(List<T> dataList){
         if(dataList == null ){
             return;
         }
@@ -63,13 +65,13 @@ public abstract class BaseDataAdapter extends RecyclerView.Adapter<BaseHolder> i
         // 如果没数据,则添加新数据
         if(this.dataList == null || this.dataList.size()==0){
 
-                this.dataList = (List<Data>) dataList;
+                this.dataList = (List<T>) dataList;
 
             notifyDataSetChanged();
         }else{
             // 否则在老数据后面添加新数据
             for (int i = 0;i< dataList.size();i++){
-                this.dataList.add((Data) dataList.get(i));
+                this.dataList.add((T) dataList.get(i));
             }
             notifyItemInserted(this.dataList.size() - dataList.size());
         }
@@ -114,7 +116,7 @@ public abstract class BaseDataAdapter extends RecyclerView.Adapter<BaseHolder> i
         dataList.clear();
     };
 
-    public List<Data> getDataList() {
+    public List<T> getDataList() {
         return dataList;
     }
 

@@ -1,5 +1,6 @@
 package com.siegfrield.hakuna_matata.ui.holder;
 
+import android.databinding.ViewDataBinding;
 import android.view.View;
 
 /**
@@ -8,8 +9,9 @@ import android.view.View;
 
 public abstract class TVHolder extends BaseHolder {
 
-    public TVHolder(View itemView) {
-        super(itemView);
+
+    public TVHolder(ViewDataBinding binding) {
+        super(binding);
     }
 
     public abstract void setFocusChange(boolean b);
