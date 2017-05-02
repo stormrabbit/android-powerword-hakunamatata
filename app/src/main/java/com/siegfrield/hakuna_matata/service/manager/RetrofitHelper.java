@@ -8,6 +8,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by 欧阳夏昱 on 2017/4/26.
+ *
+ * Restrofit 下载逻辑基础
+ *
+ * 通过 init() 获得一个 retrofit 对象
  */
 
 public class RetrofitHelper {

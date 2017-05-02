@@ -11,7 +11,6 @@ import android.view.View;
 
 import com.siegfrield.hakuna_matata.ui.adapter.BaseDataAdapter;
 import com.siegfrield.hakuna_matata.ui.holder.BaseHolder;
-import com.siegfrield.hakuna_matata.model.data.Data;
 
 import java.util.List;
 
@@ -22,7 +21,7 @@ import java.util.List;
  * 2 滚动到边缘位置判断是否需要加载数据(方法更粗暴)
  * 3 不知道有什么大坑,不过目前没用出来
  */
-public class TVRecyclerView extends RecyclerView {
+public class TVRecyclerView<T> extends RecyclerView {
 
     private OnLoadingMoreListener mOnLoadingMoreListener;
     private View leftFocusView = null;
@@ -88,7 +87,7 @@ public class TVRecyclerView extends RecyclerView {
 
 
             BaseDataAdapter adapter = (BaseDataAdapter) getAdapter();
-            List<Data> dataList = adapter.getDataList();
+            List<T> dataList = adapter.getDataList();
             if (!(focusView.getTag() instanceof BaseHolder)) {
                 return super.dispatchKeyEvent(event);
             }

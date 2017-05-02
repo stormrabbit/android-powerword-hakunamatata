@@ -7,7 +7,7 @@ import android.app.Activity;
 import android.view.View;
 
 public abstract class BaseActivity<T extends ViewDataBinding> extends Activity {
-    T mBinding ;
+    protected T mBinding ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

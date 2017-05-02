@@ -5,13 +5,13 @@ package com.siegfrield.hakuna_matata.model.data;
  */
 
 public class ResultData<T> {
-    private T t;
+    private T object;
 
     public T get() {
-        return t;
+        return object;
     }
 
-    public void set(T t) {
-        this.t = t;
+    public void set(T object) {
+        this.object = object;
     }
 }

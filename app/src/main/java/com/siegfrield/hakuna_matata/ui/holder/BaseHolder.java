@@ -1,11 +1,7 @@
 package com.siegfrield.hakuna_matata.ui.holder;
 
-import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-
-import com.siegfrield.hakuna_matata.model.data.Data;
 
 
 /**
