@@ -2,7 +2,6 @@ package com.siegfrield.hakuna_matata.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -44,7 +43,11 @@ public class HostActivity extends BaseActivity<ActivityHostBinding> implements B
 
     public void initData(){
         MenuEntry menuEntry = new MenuEntry("RetrofitDemo", RetrofitDemoActivity.class);
+        MenuEntry menuEntry2 = new MenuEntry("LinearLayoutDemo", LinearLayoutDemoActivity.class);
+
+
         menuList.add(menuEntry);
+        menuList.add(menuEntry2);
 
     }
     public void updateData(){
