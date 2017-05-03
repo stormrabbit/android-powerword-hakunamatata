@@ -3,8 +3,7 @@ package com.siegfrield.hakuna_matata.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.databinding.repacked.apache.commons.codec.binary.Base64;
-import android.util.Log;
+import android.util.Base64;
 
 
 import com.siegfrield.hakuna_matata.service.manager.MyApplication;
@@ -98,69 +97,4 @@ public class SharedPreTools {
 
     //---------------------------  
 
-    /**
-     * 储存单条对象
-     *
-     * @param per_name
-     * @param key
-     * @param vaule
-     */
-    public static void saveObjectPre(String per_name, String key, Object vaule) {
-        SharedPreferences loginUserInfo = MyApplication.getInstance().
-                getSharedPreferences(per_name, Context.MODE_APPEND);
-        Editor preEd = null;
-        if (loginUserInfo != null) {
-            preEd = loginUserInfo.edit();
-        }
-        if (preEd != null) {
-            if (vaule != null) {
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                ObjectOutputStream oos = null;
-                try {
-                    oos = new ObjectOutputStream(baos);
-                    oos.writeObject(vaule);
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                String info = new String(Base64.encodeBase64(baos.toByteArray()));
-                preEd.putString(key, info);
-            }
-            preEd.commit();
-        }
-    }
-
-    /**
-     * 读取对象集合
-     *
-     * @param per_name
-     */
-    public static <T> List<T> readAllObjectPre(String per_name) {
-        SharedPreferences loginUserInfo = MyApplication.getInstance().
-                getSharedPreferences(per_name, Context.MODE_APPEND);
-        Map<String, ?> maps = loginUserInfo.getAll();//取出所有数据
-        List<T> oblist = new ArrayList<T>();
-        Iterator it = maps.values().iterator();
-        while (it.hasNext()) {
-            String base64Str = (String) it.next();
-            byte[] base64Bytes = Base64.decodeBase64(base64Str.getBytes());
-            ByteArrayInputStream bais = new ByteArrayInputStream(base64Bytes);
-            ObjectInputStream ois;
-            try {
-                ois = new ObjectInputStream(bais);
-                T tempobj = (T) ois.readObject();
-                oblist.add(tempobj);
-            } catch (StreamCorruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        return oblist;
-    }
 } 
