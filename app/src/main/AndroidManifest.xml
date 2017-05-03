@@ -11,21 +11,21 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
         <activity
             android:name=".ui.activity.HostActivity"
             android:label="@string/title_activity_host"
             android:theme="@style/AppTheme">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.activity.RetrofitDemoActivity"/>
+        <activity android:name=".ui.activity.RetrofitDemoActivity" />
+        <activity
+            android:name=".ui.activity.LinearLayoutDemoActivity"
+            android:label="@string/title_activity_linear_layout_demo"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
