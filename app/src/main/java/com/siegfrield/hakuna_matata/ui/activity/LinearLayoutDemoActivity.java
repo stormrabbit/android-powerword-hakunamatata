@@ -20,6 +20,31 @@ public class LinearLayoutDemoActivity extends BaseActivity<ActivityLinearLayoutD
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     protected int getLayoutId() {
         return R.layout.activity_linear_layout_demo;
     }
@@ -36,9 +61,14 @@ public class LinearLayoutDemoActivity extends BaseActivity<ActivityLinearLayoutD
 //                int width = mBinding.llMain.getWidth();
 //            }
 //        });
-       // mBinding.llMain.setTags(names);
-            mBinding.llMain.measureTest();
+        mBinding.llMain.measureTest();
+//             mBinding.llMain.setTags(names);
+            // mBinding.llMain.measureTest();
    //     LinearLayoutUtils.addNames(mBinding.llMain, names, this, 0);
+
+        mBinding.btnTest.setOnClickListener(v -> {
+            System.out.println(mBinding.llMain.getMeasuredWidth());
+        });
     }
 
 }

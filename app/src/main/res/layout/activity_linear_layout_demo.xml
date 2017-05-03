@@ -7,12 +7,28 @@
     tools:context="com.siegfrield.hakuna_matata.ui.activity.LinearLayoutDemoActivity">
 
 
-    <com.siegfrield.hakuna_matata.ui.custom.DemoLinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/ll_main"
         android:orientation="vertical"
-        ></com.siegfrield.hakuna_matata.ui.custom.DemoLinearLayout>
+        >
+        <com.siegfrield.hakuna_matata.ui.custom.DemoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/ll_main"
+            android:orientation="vertical"
+            ></com.siegfrield.hakuna_matata.ui.custom.DemoLinearLayout>
+
+        <Button
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/btn_test"
+            />
+
+    </LinearLayout>
+
 
 </layout>
 

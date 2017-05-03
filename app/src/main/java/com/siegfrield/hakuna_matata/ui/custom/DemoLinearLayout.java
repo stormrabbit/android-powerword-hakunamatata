@@ -3,6 +3,7 @@ package com.siegfrield.hakuna_matata.ui.custom;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -51,10 +52,9 @@ public class DemoLinearLayout extends LinearLayout {
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
-        Logger.v("test", widthMode + "");
-        Logger.v("test", widthSize + "");
-        Logger.v("test", heightMode + "");
-        Logger.v("test", heightSize + "");
+//        if(widthSize != 0){
+//            this.drawTags();
+//        }
 
     }
 
@@ -79,12 +79,18 @@ public class DemoLinearLayout extends LinearLayout {
     }
     public void setTags(List<String> tags){
         this.tags = tags;
-        ArrayList<TextView> tViews = new ArrayList<TextView>();
+    }
+
+    private void drawTags() {
+        if(this.tags == null || this.tags.size() == 0){
+            return ;
+        }
+        ArrayList<TextView> tViews = new ArrayList<>();
         int widthMeasureSpec = MeasureSpec.makeMeasureSpec(0,
                 MeasureSpec.UNSPECIFIED);
         int heightMeasureSpec = MeasureSpec.makeMeasureSpec(0,
                 MeasureSpec.UNSPECIFIED);
-        this.measure(widthMeasureSpec, heightMeasureSpec);
+
         // 1 首先,测量出content的宽度
         int lineWidth = 0;
 
@@ -179,7 +185,5 @@ public class DemoLinearLayout extends LinearLayout {
 
         }
 
-
-        this.invalidate();
     }
 }
