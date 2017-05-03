@@ -29,7 +29,16 @@ public class LinearLayoutDemoActivity extends BaseActivity<ActivityLinearLayoutD
         String[] rwby = {"Ruby Rose", "Yang Xiaolong", "Blake Belladonna", "White Schnee"
         , "Jaune Arc", "Lie Ren", "Nora Valkyrie", "Pyrrha Nikos"};
         List<String> names = Arrays.asList(rwby);
-        LinearLayoutUtils.addNames(mBinding.llMain, names, this, 0);
+
+//        mBinding.llMain.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                int width = mBinding.llMain.getWidth();
+//            }
+//        });
+       // mBinding.llMain.setTags(names);
+            mBinding.llMain.measureTest();
+   //     LinearLayoutUtils.addNames(mBinding.llMain, names, this, 0);
     }
 
 }

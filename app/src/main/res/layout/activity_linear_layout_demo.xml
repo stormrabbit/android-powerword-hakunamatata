@@ -6,12 +6,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.siegfrield.hakuna_matata.ui.activity.LinearLayoutDemoActivity">
 
-    <LinearLayout
+
+    <com.siegfrield.hakuna_matata.ui.custom.DemoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/ll_main"
         android:orientation="vertical"
-        ></LinearLayout>
+        ></com.siegfrield.hakuna_matata.ui.custom.DemoLinearLayout>
 
 </layout>
 

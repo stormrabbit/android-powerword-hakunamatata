@@ -30,6 +30,7 @@ public class LinearLayoutUtils {
 		}
 		// 2 创建一个横排linearlayout,宽度设置为matchparent,高度为0dp,weight1,
 		LinearLayout llLine = new LinearLayout(context);
+		llLine.setOrientation(LinearLayout.HORIZONTAL);
 
 		LayoutParams layoutParams = new LayoutParams(
 				LayoutParams.MATCH_PARENT, 0, 1.0f);
