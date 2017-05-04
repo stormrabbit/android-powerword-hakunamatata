@@ -1,8 +1,10 @@
 package com.siegfrield.hakuna_matata.ui.custom;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
@@ -13,6 +15,7 @@ import com.siegfrield.hakuna_matata.utils.Logger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Administrator on 2017/5/3.
@@ -21,6 +24,7 @@ import java.util.List;
 public class DemoLinearLayout extends LinearLayout {
     private List<String> tags;
     private static final int margin = 15;
+    boolean flag = false;
     public DemoLinearLayout(Context context) {
         this(context, null ,0);
 
@@ -52,9 +56,14 @@ public class DemoLinearLayout extends LinearLayout {
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
-//        if(widthSize != 0){
-//            this.drawTags();
-//        }
+        if(widthSize != 0 && !flag){
+            int size = this.getChildCount();
+            for (int i = 0; i< size; i++){
+                this.removeViewAt(i);
+            }
+            this.drawTags();
+            flag = !flag;
+        }
 
     }
 
@@ -78,7 +87,13 @@ public class DemoLinearLayout extends LinearLayout {
 //        });
     }
     public void setTags(List<String> tags){
+        flag = flag ? !flag : flag;
+
         this.tags = tags;
+        int widthMeasure = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+        int heightMeasure = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+        this.measure(widthMeasure,heightMeasure);
+        // this.invalidate();
     }
 
     private void drawTags() {
@@ -113,6 +128,11 @@ public class DemoLinearLayout extends LinearLayout {
             // 3 创建一个textview,设置内容
             TextView tView = new TextView(getContext());
             tView.setText(name);
+            int[] colors = {Color.RED, Color.BLUE, Color.YELLOW, Color.GREEN};
+            int index = new Random().nextInt(colors.length);
+            tView.setBackgroundColor(colors[index]);
+            tView.setGravity(Gravity.CENTER);
+            tView.setTextSize(17f);
             // 4 测量textView的宽度
             tView.measure(widthMeasureSpec, heightMeasureSpec);
             int tViewWidth = tView.getMeasuredWidth();
@@ -136,6 +156,8 @@ public class DemoLinearLayout extends LinearLayout {
                             layoutParams.WRAP_CONTENT);
                     layoutParams2.rightMargin = margin;
                     layoutParams2.leftMargin = margin;
+                    layoutParams2.height = LayoutParams.MATCH_PARENT;
+                    layoutParams2.gravity = Gravity.CENTER_VERTICAL;
                     int paddingLeft = textView.getPaddingLeft();
                     int paddingRight = textView.getPaddingRight();
                     int paddingBottom = textView.getPaddingBottom();

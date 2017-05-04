@@ -61,13 +61,16 @@ public class LinearLayoutDemoActivity extends BaseActivity<ActivityLinearLayoutD
 //                int width = mBinding.llMain.getWidth();
 //            }
 //        });
-        mBinding.llMain.measureTest();
-//             mBinding.llMain.setTags(names);
+//        mBinding.llMain.measureTest();
+             mBinding.llMain.setTags(names);
             // mBinding.llMain.measureTest();
    //     LinearLayoutUtils.addNames(mBinding.llMain, names, this, 0);
 
         mBinding.btnTest.setOnClickListener(v -> {
-            System.out.println(mBinding.llMain.getMeasuredWidth());
+            String[] rwby2 = {"鲁比 洛斯", "阳小龙", "布蕾克 贝拉当娜", "怀特 诗倪"
+                    , "强 亚克", "烈 莲", "诺拉 瓦尔基里", "皮娅 尼克斯"};
+            List<String> names2 = Arrays.asList(rwby2);
+            mBinding.llMain.setTags(names2);
         });
     }
 
