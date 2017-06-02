@@ -45,11 +45,11 @@ public class HostActivity extends BaseActivity<ActivityHostBinding> implements B
     public void initData(){
         MenuEntry menuEntry = new MenuEntry("RetrofitDemo", RetrofitDemoActivity.class);
         MenuEntry menuEntry2 = new MenuEntry("LinearLayoutDemo", LinearLayoutDemoActivity.class);
-
+        MenuEntry menuEntry3 = new MenuEntry("CaremaDemo", CemeraDemoActivity.class);
 
         menuList.add(menuEntry);
         menuList.add(menuEntry2);
-
+        menuList.add(menuEntry3);
     }
     public void updateData(){
         this.adapter.updateData(menuList);

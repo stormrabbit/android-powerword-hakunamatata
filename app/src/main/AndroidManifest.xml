@@ -2,10 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.siegfrield.hakuna_matata"
     android:versionCode="1"
-    android:versionName="@string/version_name"
-    >
+    android:versionName="@string/version_name">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera2"/>
+    <uses-feature android:name="android.hardware.Camera"/>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".service.manager.MyApplication"
@@ -28,7 +33,8 @@
         <activity
             android:name=".ui.activity.LinearLayoutDemoActivity"
             android:label="@string/title_activity_linear_layout_demo"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ui.activity.CemeraDemoActivity"></activity>
     </application>
 
 </manifest>
