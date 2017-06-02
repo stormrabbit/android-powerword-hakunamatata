@@ -37,7 +37,8 @@ public class RetrofitDemoActivity extends BaseActivity<ActivityRetroFitBinding> 
     public void onHttpResult(int requestCode, ReturnType type, ResultData<WeatherData> resultData) {
             if(type == ReturnType.Success){
                 WeatherData data = resultData.get();
-                mBinding.tvHw.setText(data.toString());
+                mBinding.setWeathData(data.getWeatherinfo());
+                mBinding.tvSum.setText(data.toString());
             }
     }
 }

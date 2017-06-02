@@ -3,20 +3,87 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     >
-    <RelativeLayout
+    <data>
+        <variable
+            name="weathData"
+            type="com.siegfrield.hakuna_matata.model.data.WeatherData.WeatherinfoBean"/>
+    </data>
+    <LinearLayout
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical"
+        android:gravity="center"
         tools:context="com.siegfrield.hakuna_matata.ui.activity.RetrofitDemoActivity">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/tv_hw"
-            android:text="Hello World!" />
-    </RelativeLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/tv_city"
+            android:gravity="center"
+            android:textSize="@dimen/larger"
+            android:text="@{weathData.city + @string/city_number + weathData.cityid }"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/tv_wind"
+                android:gravity="center"
+                android:textSize="@dimen/normal_size"
+                android:text="@{weathData.WD}"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/tv_wind_level"
+                android:gravity="center"
+                android:textSize="@dimen/normal_size"
+                android:text="@{weathData.WS}"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/tv_SD"
+                android:gravity="center"
+                android:textSize="@dimen/normal_size"
+                android:text="@{weathData.SD}"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/tv_rain"
+                android:gravity="center"
+                android:textSize="@dimen/normal_size"
+                android:text="@{weathData.rain}"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/middle_size"
+            android:id="@+id/tv_sum"
+            />
+    </LinearLayout>
 </layout>

@@ -3,6 +3,7 @@ package com.siegfrield.hakuna_matata.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.transition.Transition;
 import android.view.View;
 
 import com.siegfrield.hakuna_matata.R;
@@ -59,5 +60,10 @@ public class HostActivity extends BaseActivity<ActivityHostBinding> implements B
         MenuEntry entry = adapter.getDataList().get(position);
         Intent intent = new Intent(this, entry.clazz);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

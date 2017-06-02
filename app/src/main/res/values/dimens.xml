@@ -3,4 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="normal_size">15dp</dimen>
+    <dimen name="middle_size">17dp</dimen>
+    <dimen name="large">19dp</dimen>
+    <dimen name="larger">21dp</dimen>
+    <dimen name="largest">21dp</dimen>
 </resources>

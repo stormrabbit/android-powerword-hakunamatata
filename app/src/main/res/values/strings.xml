@@ -3,4 +3,6 @@
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_host">HostActivity</string>
     <string name="title_activity_linear_layout_demo">LinearLayoutDemoActivity</string>
+    <string name="city_number">  No.</string>
+    <string name="version_name">1.0.0</string>
 </resources>
