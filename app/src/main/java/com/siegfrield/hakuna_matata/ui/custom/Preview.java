@@ -1,14 +1,20 @@
 package com.siegfrield.hakuna_matata.ui.custom;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PixelFormat;
+import android.graphics.Point;
 import android.hardware.Camera;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.view.SurfaceHolder;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+
+import com.siegfrield.hakuna_matata.utils.WindowManagerUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,11 +23,12 @@ import java.util.List;
  * Created by Administrator on 2017/6/2.
  */
 
-public class Preview extends FrameLayout implements SurfaceHolder.Callback, Camera.PictureCallback ,Camera.ShutterCallback{
+public class Preview extends FrameLayout implements SurfaceHolder.Callback, Camera.PictureCallback {
     SurfaceView mSurfaceView;
     SurfaceHolder mHolder;
     private Camera mCamera;
     private List<Camera.Size> mSupportedPreviewSizes;
+    private ImageView mImageView;
 
 
     public Preview(Context context) {
@@ -47,6 +54,10 @@ public class Preview extends FrameLayout implements SurfaceHolder.Callback, Came
         mHolder = mSurfaceView.getHolder();
         mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        mImageView = new ImageView(context);
+        addView(mImageView,layoutParams);
+        mImageView.setVisibility(GONE);
+        mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
     public void setCamera(Camera camera) {
@@ -63,6 +74,7 @@ public class Preview extends FrameLayout implements SurfaceHolder.Callback, Came
 
             try {
                 mCamera.setPreviewDisplay(mHolder);
+                this.setParameter();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -71,6 +83,50 @@ public class Preview extends FrameLayout implements SurfaceHolder.Callback, Came
             // surface. Preview must be started before you can take a picture.
             mCamera.startPreview();
         }
+    }
+
+    private void setParameter() {
+        if(mCamera == null){
+            return ;
+        }
+
+        Camera.Parameters parameters = mCamera.getParameters(); // 获取各项参数
+
+
+        parameters.setPictureFormat(PixelFormat.JPEG); // 设置图片格式
+        parameters.setJpegQuality(100); // 设置照片质量
+//        //获得相机支持的照片尺寸,选择合适的尺寸
+//        List<Camera.Size> sizes = parameters.getSupportedPictureSizes();
+//        if(getContext() instanceof Activity){
+//            Point point = WindowManagerUtil.getWindowSize((Activity) getContext());
+//        }
+//        int maxSize = Math.max(1080, 1080);
+//        int length = sizes.size();
+//        if (maxSize > 0) {
+//            for (int i = 0; i < length; i++) {
+//                if (maxSize <= Math.max(sizes.get(i).width, sizes.get(i).height)) {
+//                    parameters.setPictureSize(sizes.get(i).width, sizes.get(i).height);
+//                    break;
+//                }
+//            }
+//        }
+//        List<Camera.Size> ShowSizes = parameters.getSupportedPreviewSizes();
+//        int showLength = ShowSizes.size();
+//        if (maxSize > 0) {
+//            for (int i = 0; i < showLength; i++) {
+//                if (maxSize <= Math.max(ShowSizes.get(i).width, ShowSizes.get(i).height)) {
+//                    parameters.setPreviewSize(ShowSizes.get(i).width, ShowSizes.get(i).height);
+//                    break;
+//                }
+//            }
+//        }
+//
+//        parameters.set("orientation","portrait");
+        parameters.setPictureSize(1920,1080);
+        parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+        parameters.set("rotation", 90);
+        mCamera.setDisplayOrientation(90); // 这句比较关键
+        mCamera.setParameters(parameters);
     }
 
     private void stopPreviewAndFreeCamera() {
@@ -89,7 +145,9 @@ public class Preview extends FrameLayout implements SurfaceHolder.Callback, Came
 
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
-        System.out.println("测试啊");
+
+
+
     }
 
     @Override
@@ -108,18 +166,23 @@ public class Preview extends FrameLayout implements SurfaceHolder.Callback, Came
 
     public void takePhoto() {
         if(mCamera!=null){
-            mCamera.takePicture(this, this ,null);
+            mCamera.takePicture(null, null ,this);
         }
     }
 
     @Override
     public void onPictureTaken(byte[] bytes, Camera camera) {
-        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        try {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            mImageView.setImageBitmap(bitmap);
+            mImageView.setVisibility(VISIBLE);
+            mSurfaceView.setVisibility(GONE);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+
 
     }
 
-    @Override
-    public void onShutter() {
-        System.out.println();
-    }
 }

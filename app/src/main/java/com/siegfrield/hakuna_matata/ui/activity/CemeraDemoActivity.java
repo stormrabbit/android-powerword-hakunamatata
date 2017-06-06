@@ -10,6 +10,9 @@ import com.siegfrield.hakuna_matata.databinding.ActivityCemeraDemoBinding;
 import com.siegfrield.hakuna_matata.databinding.ActivityHostBinding;
 import com.siegfrield.hakuna_matata.service.manager.CameraOperationHelper;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class CemeraDemoActivity extends BaseActivity<ActivityCemeraDemoBinding> implements View.OnClickListener {
     CameraOperationHelper helper;
     @Override
@@ -17,6 +20,36 @@ public class CemeraDemoActivity extends BaseActivity<ActivityCemeraDemoBinding> 
         super.onCreate(savedInstanceState);
         helper = CameraOperationHelper.getHelper();
         helper.setPreview(mBinding.prvCamera);
+//        if(helper.safeCameraOpen()){
+//            try{
+//                mBinding.prvCamera.setCamera(helper.mCamera);
+//            }catch (Exception e){
+//                e.printStackTrace();
+//            }
+//
+//        }
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        Runnable runnable1 = new Runnable() {
+            @Override
+            public void run() {
+                startCamera();
+            }
+        };
+
+        Timer timer = new Timer();
+        TimerTask tt= new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(runnable1);
+            }
+        };
+
+        timer.schedule(tt,3000);
 
     }
 
@@ -39,15 +72,17 @@ public class CemeraDemoActivity extends BaseActivity<ActivityCemeraDemoBinding> 
 
     @Override
     public void onClick(View view) {
-        Camera camera ;
+        helper.takePhoto();
+    }
+
+    private void startCamera(){
         if(helper.safeCameraOpen()){
             try{
                 mBinding.prvCamera.setCamera(helper.mCamera);
-                helper.takePhoto();
+
             }catch (Exception e){
                 e.printStackTrace();
             }
-
         }
     }
 }
